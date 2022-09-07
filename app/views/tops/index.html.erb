@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head style="background-image: url('assets/images/top_image.jpeg')" >
+
+    <meta charset="utf-8">
+    <title>Bootstrap Example</title>
+    <%= image_tag 'top_image.jpeg' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="blog">
+      <h1>ブログ一覧</h1>
+
+      <p><%= notice %></p>
+
+      <table>
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+
+      <%
+=begin%>
+ <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= blog.title %></td>
+          <td><%= blog.content %></td>
+          <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+          <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+          <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+        </tr>
+      <% end %>
+      </table>
+
+      <%= link_to '新しくブログを投稿する', new_blog_path %>
+
+      <%= link_to 'DIVE INTO CODEのページへ', 'https://diveintocode.jp/'  %>
+      <%= link_to 'ブログ一覧画面に戻る', blogs_path %>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel panel-blue">This is a column.</div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-purple">This is a column.</div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-blue">This is a column.</div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-purple">This is a column.</div>
+        </div>
+      </div>
+    </div>
+<%
+=end%>
+    <style>
+      body {
+        margin: 4rem 0;
+      }
+      h4 {
+        margin-bottom: 2rem;
+        margin-top: 3rem;
+      }
+      .panel {
+        border-radius: 0.3rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .panel-blue {
+        background-color: #0087FF;
+      }
+      .panel-purple {
+        background-color: #7F51F4;
+      }
+    </style>
+  </body>
+</html>
