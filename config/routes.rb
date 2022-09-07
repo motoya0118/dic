@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blogs
   get 'users/show'
   devise_for :users
   resources :users, :only => [:show]
